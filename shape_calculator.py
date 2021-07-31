@@ -33,15 +33,12 @@ class Rectangle:
             return 'Too big for picture.'
         return f'{"*" * self.width}\n' * self.height
 
-    def get_amount_inside(self, shape=None):
-        if not shape:
-            return None
+    def get_amount_inside(self, shape):
         if shape.width != shape.height:
             side = shape.width * shape.height
         else:
             side = shape.width ** 2
-        amount = int((self.width * self.height) / side)
-        return amount
+        return int((self.width * self.height) / side)
 
     def __str__(self):
         if type(self) is not Rectangle:
