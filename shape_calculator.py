@@ -34,11 +34,7 @@ class Rectangle:
         return f'{"*" * self.width}\n' * self.height
 
     def get_amount_inside(self, shape):
-        if shape.width != shape.height:
-            side = shape.width * shape.height
-        else:
-            side = shape.width ** 2
-        return int((self.width * self.height) / side)
+        return int((self.get_area() / shape.get_area()))
 
     def __str__(self):
         if type(self) is not Rectangle:
@@ -46,5 +42,4 @@ class Rectangle:
         return f'Rectangle(width={self.width}, height={self.height})'
 
 class Square(Rectangle):
-
     pass
