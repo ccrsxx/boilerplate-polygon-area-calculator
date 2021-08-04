@@ -3,21 +3,12 @@ class Rectangle:
     def __init__(self, width, height=None):
         self.width = width
         self.height = height
-        if type(self) is not Rectangle:
-            self.height = width
-
-    def set_side(self, side):
-        self.width = self.height = side
 
     def set_width(self, width):
         self.width = width
-        if type(self) is not Rectangle:
-            self.height = width
 
     def set_height(self, height):
         self.height = height
-        if type(self) is not Rectangle:
-            self.width = height
 
     def get_area(self):
         return self.width * self.height
@@ -37,9 +28,24 @@ class Rectangle:
         return int((self.get_area() / shape.get_area()))
 
     def __str__(self):
-        if type(self) is not Rectangle:
-            return f'Square(side={self.width})'
         return f'Rectangle(width={self.width}, height={self.height})'
 
 class Square(Rectangle):
-    pass
+
+    def __init__(self, width):
+        super().__init__(width)
+        self.height = self.width
+
+    def set_width(self, width):
+        super().set_width(width)
+        self.height = width
+
+    def set_height(self, height):
+        super().set_height(height)
+        self.width = height
+
+    def set_side(self, side):
+        self.width = self.height = side
+
+    def __str__(self):
+        return f'Square(side={self.width})'
